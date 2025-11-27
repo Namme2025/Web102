@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Dashboard Overview</title>
+    <link rel="stylesheet" href="stylesheet.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <button class="toggle-btn" id="sidebar-toggle">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search...">
+            </div>
+
+            <nav class="navigation">
+                <a href="#" class="nav-item active">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item about-link">
+                    <i class="fas fa-users"></i>
+                    <span>About Us</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1><b>OUR TEAM</b></h1>
+            </header>
+
+            <div class="content-body">
+                <p>Welcome to our page! We are a growing team dedicated to learning and mastering HTML and CSS, creating simple yet meaningful web profiles as we develop our skills and creativity. Our goal is to learn, improve, and build projects that reflect our passion for web development.
+                </p>
+            </div>
+
+            <button class="toggle-about-btn" id="toggle-about-btn">
+                I-click para Makita ang Aming Team <i class="fas fa-chevron-down"></i>
+            </button>
+            
+            <div class="collapsible-content" id="team-details">
+
+                <div class="member-box leader-box">
+                    <img src="c:\Users\Admin\Downloads\celismutikmagingtao.jpeg" alt="professional picture">
+                    <h1 class="member-name"><b>Celis Jay B</b></h1>
+                    <p class="sub">Leader</p>
+                    <p class="member-details1">
+                        Responsible for guiding the team in planning, designing, and developing web profiles while ensuring the work standards. Organizing tasks, supporting members in learning, and maintaining the overall quality and consistency of the project.
+                    </p>
+                </div>
+
+                <div class="othermembers-container">  
+                    <div class="othermember-box">
+                        <img src="lopezimage.jpeg" alt="picture me">
+                        <p class="member-name1">Arcipe Chariz</p>
+                        <p class="sub"> UI/UX Designer</p>
+                        <p class="member-details">
+                            Manage layout, color schemes, and focusing on user experience, readability, and overall design harmony.
+                        </p>
+                    </div>
+                    
+                    <div class="othermember-box">
+                        <img src="c:\Users\Admin\Downloads\canetejoserizal2.0.jpg" alt="picture me">
+                        <p class="member-name1">Canete Edmark</p>
+                        <p class="sub">Graphic Designer</p>
+                        <p class="member-details">
+                            Manage designs images, icons, banners, and other visual elements 
+                        </p>
+                    </div>
+                    
+                    <div class="othermember-box">
+                        <img src="lopezimage.jpeg" alt="picture me">
+                        <p class="member-name1">Ace Deleon</p>
+                        <p class="sub"> Documentation Manager</p>
+                        <p class="member-details">
+                            Handles project documentation, organizes files, and prepares summaries or reports
+                        </p>
+                    </div>
+                    
+                    <div class="othermember-box">
+                        <img src="c:\Users\Admin\Downloads\emmankun.png" alt="picture me">
+                        <p class="member-name1">Osigan, Emmanuel</p>
+                        <p class="sub"> Assistant Manager</p>
+                        <p class="member-details">
+                            Monitors the website after launch, handles updates,
+                        </p>
+                    </div>
+                    
+                    <div class="othermember-box">
+                        <img src="c:\Users\Admin\Downloads\lopezimage.jpeg" alt="picture me">
+                        <p class="member-name1">Lopez Cherice Nicole</p>
+                        <p class ="sub">Front-End Developer</p>
+                        <p class="member-details">
+                            Specializes in writing clean and efficient HTML and CSS code
+                        </p>
+                    </div>
+                    
+                    <div class="othermember-box">
+    <img src="c:\Users\Admin\Downloads\Cruzada.jpeg" alt="picture me">
+                        <p class="member-name1">Cruzada, John Carlo</p>
+                        <p class ="sub"> Front-End Developer</p>
+                        <p class="member-details">
+                            Specializes in writing clean and efficient HTML and CSS code, 
+                        </p>
+                    </div>
+                </div>
+            </div>         </main>
+
+    </div>
+
+    <script>
+        // JAVASCRIPT para sa TOGGLE Button (I-click para lumabas ang members)
+        const toggleBtn = document.getElementById('toggle-about-btn');
+        const teamDetails = document.getElementById('team-details');
+        const icon = toggleBtn.querySelector('i');
+
+        // Itago ang content sa simula
+        teamDetails.style.display = 'none';
+
+        toggleBtn.addEventListener('click', () => {
+            if (teamDetails.style.display === 'none') {
+                teamDetails.style.display = 'flex'; // Ipakita ang content (flex dahil sa members-container)
+                icon.className = 'fas fa-chevron-up'; // Palitan ang icon
+                toggleBtn.style.backgroundColor = 'var(--primary-color)';
+                toggleBtn.style.color = '#fff';
+            } else {
+                teamDetails.style.display = 'none'; // Itago ang content
+                icon.className = 'fas fa-chevron-down'; // Palitan ang icon
+                toggleBtn.style.backgroundColor = 'var(--nav-hover-bg)';
+                toggleBtn.style.color = 'var(--text-color)';
+            }
+        });
+    </script>
+</body>
+</html>

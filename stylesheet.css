@@ -1,0 +1,403 @@
+/*
+ * ========================================
+ * Theme Variables
+ * ========================================
+ */
+:root {
+    --primary-color: #5b69e0; /* Blue/Purple for active state */
+    --primary-light: #e0e4fa;
+    --text-color: #333;
+    --secondary-text-color: #6c757d;
+    --background-color: #f8f9fa;
+    --main-bg: #ffffff;
+    --sidebar-bg: #fff;
+    --nav-hover-bg: #f3f4f7;
+    --search-bg: #eef1f5;
+    --border-color: #e9ecef;
+}
+
+/*
+ * ========================================
+ * Base & Layout Styles
+ * ========================================
+ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/*
+ * ========================================
+ * Sidebar Styling
+ * ========================================
+ */
+.sidebar {
+    width: 280px;
+    background-color: var(--sidebar-bg);
+    padding: 1rem 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    transition: width 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    padding: 0 1.5rem 1rem 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--secondary-text-color);
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: var(--search-bg);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.search-box i {
+    color: var(--secondary-text-color);
+    margin-right: 0.75rem;
+}
+
+.search-box input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+/* Navigation Links */
+.navigation {
+    flex-grow: 1;
+    padding: 0 1.5rem;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--secondary-text-color);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-item i {
+    font-size: 1.25rem;
+    width: 30px; 
+}
+
+.nav-item span {
+    margin-left: 0.75rem;
+}
+
+.nav-item:hover {
+    background-color: var(--nav-hover-bg);
+    color: var(--text-color);
+}
+
+.nav-item.active {
+    background-color: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(91, 105, 224, 0.3);
+}
+
+.nav-item.active:hover {
+    background-color: var(--primary-color);
+    color: #fff; 
+}
+
+/*
+ * ========================================
+ * Main Content Styling
+ * ========================================
+ */
+.main-content {
+    flex-grow: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    background-color: var(--background-color);
+}
+
+.content-header h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.content-body p {
+    background-color: var(--main-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    color: var(--secondary-text-color);
+    margin-bottom: 15px;
+}
+
+/* === TOGGLE BUTTON === */
+.toggle-about-btn {
+    display: block;
+    width: 90%;
+    max-width: 500px;
+    margin: 30px auto 20px auto;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-about-btn:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.toggle-about-btn i {
+    margin-left: 10px;
+    transition: transform 0.3s;
+}
+
+/* === COLLAPSIBLE CONTENT & MEMBERS === */
+
+.collapsible-content {
+    display: none; /* Controlled by JS, initally hidden */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.member-box {
+    width: 350px;
+    max-width: 100%; /* Ensure it fits in smaller screens */
+    background: var(--main-bg);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    margin: 20px 0; /* Adjusted margin */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.member-box:hover {
+    transform: translateY(-5px);
+}
+
+.member-box img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid var(--primary-color);
+    object-fit: cover;
+    margin-bottom: 15px;
+    box-shadow: 0 0 0 4px rgba(91, 105, 224, 0.3);
+}
+
+.member-name {
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.sub {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--secondary-text-color);
+    margin-bottom: 15px;
+    padding: 2px 10px;
+    border-radius: 5px;
+    background-color: var(--nav-hover-bg);
+}
+
+.member-details1 {
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    color: var(--secondary-text-color);
+    line-height: 1.5;
+}
+
+/* === Other Members Container === */
+
+.othermembers-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+.othermember-box {
+    width: 250px;
+    min-height: 350px;
+    background: var(--main-bg);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.othermember-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.othermember-box img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+
+.member-name1 {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 5px;
+    color: var(--text-color);
+}
+
+.member-details {
+    margin-top: 15px;
+    font-size: 13px;
+    font-weight: 400;
+    text-align: center;
+    color: var(--secondary-text-color);
+}
+
+/*
+ * ========================================
+ * Media Queries (Responsiveness)
+ * ========================================
+ */
+
+/* Para sa mas maliit na screen (Mobile) */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 0.5rem 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .sidebar-header {
+        padding: 0 1rem 0.5rem 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .toggle-btn {
+        display: none; /* Hide sidebar toggle on small screen if using full width sidebar */
+    }
+
+    .search-box {
+        margin: 0 1rem 1rem 1rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .navigation {
+        padding: 0 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        border-top: 1px solid var(--border-color);
+        padding-top: 10px;
+    }
+
+    .nav-item {
+        padding: 0.5rem 0.75rem;
+        margin-bottom: 0.25rem;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .nav-item i {
+        margin-bottom: 3px;
+        width: auto;
+    }
+
+    .nav-item span {
+        margin-left: 0;
+        font-size: 0.75rem;
+    }
+
+    .main-content {
+        padding: 1rem;
+    }
+    
+    .content-header h1 {
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    
+    .member-box {
+        width: 100%;
+        padding: 20px;
+        margin: 10px 0;
+    }
+
+    .othermember-box {
+        width: 100%; /* Stack members vertically on mobile */
+        max-width: 300px;
+    }
+
+    .othermembers-container {
+        gap: 15px;
+    }
+}
